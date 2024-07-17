@@ -1,61 +1,41 @@
 <script setup>
 
-  import { reactive } from "vue";
-
-  const estado = reactive({
-    num1: 0,
-    num2: 0,
-    operacao: '',
-    res: 0
-  })
-
-  function operar(){
-    const a = estado.num1
-    const b = estado.num2
-    
-    switch(estado.operacao){
-      case 'soma':
-        estado.res = a+b
-        return estado.res
-      case 'subtracao':
-        estado.res = a-b
-        return estado.res
-      case 'multiplicacao':
-        estado.res = a*b
-        return estado.res
-      case 'divisao':
-        estado.res = a/b
-        return estado.res
-    }
-  }
+import Componente from "./components/Componente.vue";
 
 </script>
 
 <template>
 
   <div class="interface_box">
-    <h1>Calculadora VueJS</h1>
-    <div class="type_box">
-      <label for="operacao">Selecione o tipo de operação:</label>
-      <select name="operacao" v-model="estado.operacao" @change="operar()" >
-        <option value="soma">Soma</option>
-        <option value="subtracao">Subtração</option>
-        <option value="multiplicacao">Multiplicação</option>
-        <option value="divisao">Divisão</option>
-      </select>
-    </div>
-    <div class="input_box">
-      <input @keyup="operar()" v-model="estado.num1" type="number" maxlength="6" minlength="1">
-      <input @keyup="operar()" v-model="estado.num2" type="number" maxlength="6" minlength="1">
-    </div>
-    <div class="result_box">
-      <p>
-        Resultado: {{ estado.res }}
-      </p>
-    </div>
+    <h1 class="title">Calculadora VueJS</h1>
+    <Componente class="componente"/>
   </div>
 
 </template>
 
 <style scoped>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.interface_box{
+  max-width: 480px;
+  width: 90%;
+  margin: 64px auto 0;
+  text-align: center;
+  background-color: #156;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px #000;
+}
+
+.title{
+  margin-bottom: 32px
+}
+
 </style>
